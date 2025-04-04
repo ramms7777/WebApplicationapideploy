@@ -1,5 +1,3 @@
-using System.Security.Cryptography.X509Certificates;
-
 var builder = WebApplication.CreateBuilder(args);
 
 
@@ -17,7 +15,6 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
 
 
 app.UseAuthorization();
@@ -25,13 +22,3 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
-builder.WebHost.ConfigureKestrel(options =>
-{
-    var certPath = builder.Configuration["ASPNETCORE_Kestrel__Certificates__Default__Path"];
-    var certPassword = builder.Configuration["ASPNETCORE_Kestrel__Certificates__Default__Password"];
-
-    options.ConfigureHttpsDefaults(httpsOptions =>
-    {
-        httpsOptions.ServerCertificate = new X509Certificate2(certPath, certPassword);
-    });
-});
