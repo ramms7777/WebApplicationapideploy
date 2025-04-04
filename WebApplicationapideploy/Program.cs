@@ -1,15 +1,25 @@
 var builder = WebApplication.CreateBuilder(args);
 
-// Register controller services
+// Add services to the container.
+builder.WebHost.UseUrls("http://*:8080"); // Change to desired port
 builder.Services.AddControllers();
+// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-app.MapGet("/", () => "Hello, World!"); // Test route
+// Configure the HTTP request pipeline.
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
 
-app.UseRouting();
+app.UseHttpsRedirection();
 
-// Ensure controller endpoints are available
-app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
+app.UseAuthorization();
+
+app.MapControllers();
 
 app.Run();
