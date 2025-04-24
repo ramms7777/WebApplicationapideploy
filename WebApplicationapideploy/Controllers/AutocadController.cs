@@ -4,26 +4,26 @@ namespace WebApplicationapideploy.Controllers;
 
 [ApiController]
 [Route("[controller]")]
-public class WeatherForecastController : ControllerBase
+public class AutoCADController : ControllerBase
 {
     private static readonly string[] Summaries = new[]
     {
         "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
     };
 
-    private readonly ILogger<WeatherForecastController> _logger;
+    private readonly ILogger<AutoCADController> _logger;
 
-    public WeatherForecastController(ILogger<WeatherForecastController> logger)
+    public AutoCADController(ILogger<AutoCADController> logger)
     {
         _logger = logger;
     }
 
-    [HttpGet(Name = "WeatherForecast")]
+    [HttpGet(Name = "AutoCAD")]
     public IEnumerable<WeatherForecast> Get()
     {
-        return Enumerable.Range(1, 5).Select(index => new WeatherForecast
+        return Enumerable.Range(5, 50).Select(index => new WeatherForecast
         {
-            Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index+2)),
+            Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index + 2)),
             TemperatureC = Random.Shared.Next(-20, 5500),
             Summary = Summaries[Random.Shared.Next(Summaries.Length)]
         })
