@@ -1,9 +1,9 @@
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 
 namespace WebApplicationapideploy.Controllers;
 
 [ApiController]
-[Route("autocad")]
+[Route("autocad")] // 💡 Always lowercase route for Linux containers
 public class AutoCADController : ControllerBase
 {
     private static readonly string[] Summaries = new[]
@@ -18,15 +18,17 @@ public class AutoCADController : ControllerBase
         _logger = logger;
     }
 
-    [HttpGet(Name = "AutoCAD")]
-    public IEnumerable<WeatherForecast> Get()
+    // 🔧 Remove route name ("AutoCAD") if not used by Url.Action
+    [HttpGet]
+    public IActionResult Get()
     {
-        return Enumerable.Range(5, 50).Select(index => new WeatherForecast
+        var result = Enumerable.Range(5, 50).Select(index => new WeatherForecast
         {
             Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index + 2)),
-            TemperatureC = Random.Shared.Next(-20, 5500),
+            TemperatureC = Random.Shared.Next(-20, 55),
             Summary = Summaries[Random.Shared.Next(Summaries.Length)]
-        })
-        .ToArray();
+        });
+
+        return Ok(result);
     }
 }
