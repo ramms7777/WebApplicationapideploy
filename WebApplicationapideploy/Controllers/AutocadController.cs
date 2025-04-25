@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace WebApplicationapideploy.Controllers;
 
 [ApiController]
-[Route("[controller]")]
+[Route("autocad")]
 public class AutoCADController : ControllerBase
 {
     private static readonly string[] Summaries = new[]
