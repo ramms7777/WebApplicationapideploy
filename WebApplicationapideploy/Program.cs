@@ -33,3 +33,5 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+
+builder.WebHost.UseUrls("http://*:5001");
