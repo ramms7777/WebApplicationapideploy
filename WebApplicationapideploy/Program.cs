@@ -16,7 +16,7 @@ builder.Services.AddDbContext<MyDbContext>(options =>
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
+builder.WebHost.UseUrls("http://*:5001");
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -34,4 +34,4 @@ app.MapControllers();
 
 app.Run();
 
-builder.WebHost.UseUrls("http://*:5001");
+
