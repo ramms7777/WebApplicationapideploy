@@ -9,9 +9,9 @@ namespace WebApplicationapideploy.Controllers
     [Route("api/[controller]")]
     public class EmployeesController : ControllerBase
     {
-        private readonly MyDbContext _context;
+        private readonly AppDbContext _context;
 
-        public EmployeesController(MyDbContext context)
+        public EmployeesController(AppDbContext context)
         {
             _context = context;
         }
