@@ -1,12 +1,13 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using WebApplicationapideploy.Models;  // 👈 update this based on your project
+using WebApplicationapideploy.Models;
 
-namespace WebApplicationapideploy.Data
+public class AppDbContext : DbContext
 {
-    public class MyDbContext : DbContext
+    public AppDbContext(DbContextOptions<AppDbContext> options)
+        : base(options)
     {
-        public MyDbContext(DbContextOptions<MyDbContext> options) : base(options) { }
-
-        public DbSet<Employee> Employees { get; set; }
     }
+
+    // Add your tables (entities) as DbSet<T> properties
+    public DbSet<Employee> Employees { get; set; }  // Example
 }
