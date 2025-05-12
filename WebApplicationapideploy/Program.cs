@@ -22,7 +22,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.WebHost.UseUrls("http://*:5001");
+builder.WebHost.UseUrls("http://*:5002");
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
