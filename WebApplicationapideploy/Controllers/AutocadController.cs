@@ -3,7 +3,7 @@
 namespace WebApplicationapideploy.Controllers;
 
 [ApiController]
-[Route("autocad")] // 💡 Always lowercase route for Linux containers
+[Route("autocadtwo")] // 💡 Always lowercase route for Linux containers
 public class AutoCADController : ControllerBase
 {
     private static readonly string[] Summaries = new[]
